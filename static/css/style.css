@@ -143,7 +143,7 @@ banner
 
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
+.navbar-default .navAbar-nav>.active>a:hover {
     color: #fff;
     text-transform: uppercase;
     background-color: rgba(12, 184, 182, 0.21);
@@ -179,8 +179,8 @@ banner
     position: relative;
 }
 
-#banner {
-    background: url('../img/Banner-Covid.png') no-repeat fixed;
+.banner {
+    background: url('../img/bg-banner.jpg') no-repeat fixed;
     background-size: cover;
     min-height: 650px;
     position: relative;

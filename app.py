@@ -23,5 +23,9 @@ def predict():
     else:
         return render_template('predict.html',pred='You are not likely to get exposed to Covid-19.\n Probability of getting Covid-19 is {}'.format(output),bhai="Your Forest is Safe for now")
 
+@app.route('/predictco', methods = ['GET'])
+def predictco():
+    return render_template('predictco.html')
+
 if __name__ == "__main__":
     app.run(port=3000, debug = True)

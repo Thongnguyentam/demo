@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#banner">Home</a></li>
-                <li class=""><a href="#predict">Predict</a></li>
+                <li class=""><a href="/predict">Predict</a></li>
                 <li class=""><a href="#about">About</a></li>
                 <li class=""><a href="#contact">Contact</a></li>
               </ul>
@@ -155,7 +155,7 @@
           <div className="predict-container">
             <div className="button-container">
               <h1 align="center"> Which disease do you want to diagnose?</h1>
-              <button className="btn1 btn-20px" action="/predict">
+              <button className="btn1 btn-20px" onClick={handleClickCOVID}>
                 Covid - 19
               </button>
               <button className="btn1 btn-20px" onClick={handleClickBC}>
@@ -195,7 +195,7 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-            <img src="./static/img/doctor.png" alt="..." class="team-img">
+            <img src="./static/img/doctor2.jpg" alt="..." class="team-img">
             <div class="caption">
               <h3>Thong Nguyen</h3>
               <p>VNU-HCM High school</p>
