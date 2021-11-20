@@ -25,7 +25,7 @@ def predict():
 
 @app.route('/predictco', methods = ['GET'])
 def predictco():
-    return render_template('predictco.html')
+    return render_template('predict.html')
 
 if __name__ == "__main__":
     app.run(port=3000, debug = True)
