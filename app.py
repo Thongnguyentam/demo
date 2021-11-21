@@ -12,16 +12,16 @@ def hello_world():
 
 @app.route('/predict', methods = ['POST'])
 def predict():
-    int_feature = [int(x) for x in request.form.values()]
+    int_feature = [float(x) for x in request.form.values()]
     final = np.array(int_feature)
     final.transpose()
-    prediction = model.feedforward(final)
+    prediction = model.feedforward(final)*100
     output='{0:.{1}f}'.format(prediction[0][1], 2)
 
     if output>str(0.5):
-        return render_template('predict.html',pred='You are likely to get exposed to Covid-19.\nProbability of getting Covid-19 is {}'.format(output),bhai="kuch karna hain iska ab?")
+        return render_template('predict.html',pred='You are likely to get exposed to Covid-19.\nProbability of getting Covid-19 is {} %'.format(output))
     else:
-        return render_template('predict.html',pred='You are not likely to get exposed to Covid-19.\n Probability of getting Covid-19 is {}'.format(output),bhai="Your Forest is Safe for now")
+        return render_template('predict.html',pred='You are not likely to get exposed to Covid-19.\n Probability of getting Covid-19 is {} %'.format(output))
 
 @app.route('/predictco', methods = ['GET'])
 def predictco():
