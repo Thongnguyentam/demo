@@ -2,6 +2,7 @@ from logging import debug
 from flask import Flask, render_template, request
 import numpy as np
 import pickle
+import os
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
@@ -13,12 +14,11 @@ def hello_world():
 @app.route('/predict', methods = ['POST'])
 def predict():
     int_feature = [float(x) for x in request.form.values()]
-    final = np.array(int_feature)
-    final.transpose()
+    final = np.reshape(int_feature, (6,1))
     prediction = model.feedforward(final)*100
-    output='{0:.{1}f}'.format(prediction[0][1], 2)
+    output='{0:.{1}f}'.format(prediction[1][0], 2)
 
-    if output>str(0.5):
+    if output>str(50):
         return render_template('predict.html',pred='You are likely to get exposed to Covid-19.\nProbability of getting Covid-19 is {} %'.format(output))
     else:
         return render_template('predict.html',pred='You are not likely to get exposed to Covid-19.\n Probability of getting Covid-19 is {} %'.format(output))
@@ -28,4 +28,5 @@ def predictco():
     return render_template('predict.html')
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    por = os.environ.get("PORT", 5000) #Heroku will set the PORT environment variable for web traffic
+    app.run(debug = False, host = "0.0.0.0", port = por)

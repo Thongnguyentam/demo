@@ -29,9 +29,8 @@ def vectorized_result(j):
 
 import pandas as pd
 
-df = pd.read_excel ('covid1.xlsx')
-
-training = df.values
+#df = pd.read_excel ('covid1.xlsx')
+training = []
 
 X = []
 Y = []
@@ -72,9 +71,10 @@ validation_data = zip(X_val1, Y_val1)
 import network2
 
 
-net = network2.Network([6, 4, 2], cost=network2.CrossEntropyCost)
-net.large_weight_initializer()
-net.SGD(training_data, 40, 10, 0.25, lmbda = 0.375,evaluation_data=validation_data,
-    monitor_evaluation_accuracy=True, monitor_training_accuracy = True)
+#net = network2.Network([6, 4, 2], cost=network2.CrossEntropyCost)
+net = network2.load('storing')
+#net.large_weight_initializer()
+#net.SGD(training_data, 40, 10, 0.25, lmbda = 0.375,evaluation_data=validation_data,
+ #   monitor_evaluation_accuracy=True, monitor_training_accuracy = True)
 
 pickle.dump(net,open('model.pkl','wb'))
