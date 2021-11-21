@@ -28,4 +28,4 @@ def predictco():
     return render_template('predict.html')
 
 if __name__ == "__main__":
-    app.run(port=3000, debug = True)
+    app.run(debug = True)
